@@ -1,0 +1,24 @@
+{
+  "name": "algorithmslive",
+  "version": "1.0.0",
+  "description": "A web application for live demos of algorithms using ReactJS + Node.JS stack.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanlee31/algorithmslive.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "NodeJS",
+    "Algorithms"
+  ],
+  "author": "Sean Lee",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/seanlee31/algorithmslive/issues"
+  },
+  "homepage": "https://github.com/seanlee31/algorithmslive#readme"
+}
