@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import {binarySearch, searchDC} from '../algorithms/searchAlgorithms';
+import {searchAlgs, binarySearch, searchDC} from '../algorithms/searchAlgorithms';
+import $ from 'jquery';
 
 
 var array = [10, 20, 30, 40],
     target = 20;
 
-var res = searchDC(array, target);
-
 const pageTitle = "Algorithms Live";
 const algorithmDemosTitle = "Algorithms Demos";
-const algorithmDemoTitle = String(res.bool);
-// const algorithmDemoTitle = "Algorithms Demo 1";
+const algorithmDemoTitle = "Binary Search";
+const algorithmTypeTitle = "Search Algorithms";
+
+function getAlgorithmByTitle(algTitle) {
+   let algTitleTrimmed = algTitle.replace(/\s/g, "").toLowerCase();
+   let algorithm = searchAlgs[algTitleTrimmed];
+   return algorithm;
+}
+
+let alg = getAlgorithmByTitle(algorithmDemoTitle);
+let res = alg(array, target);
 
 class App extends Component {
    render() {
@@ -22,6 +30,8 @@ class App extends Component {
       );
    }
 }
+
+// Header
 class Header extends Component {
    render() {
       return (
@@ -31,14 +41,28 @@ class Header extends Component {
       );
    }
 }
+
+// Contents
 class Content extends Component {
    render() {
       return (
          <div>
             <h2>{algorithmDemosTitle}</h2>
-            <AlgorithmDemos/>
+            <AlgorithmDemosByTypes/>
          </div>
       );
+   }
+}
+
+// Algorithms
+class AlgorithmDemosByTypes extends Component {
+   render() {
+      return (
+         <div>
+            <h3>{algorithmTypeTitle}</h3>
+            <AlgorithmDemos/>
+         </div>
+      )
    }
 }
 
@@ -46,7 +70,20 @@ class AlgorithmDemos extends Component {
    render() {
       return (
          <div>
-            <h3>{algorithmDemoTitle}</h3>
+            <h4>{algorithmDemoTitle}</h4>
+            <AlgorithmDemo/>
+         </div>
+      )
+   }
+}
+
+class AlgorithmDemo extends Component {
+   render() {
+      return (
+         <div>
+            Array: {array.map( (el) => <li>{el}</li> )} <br/>
+            Target: {target} <br/>
+            Result: {String(res.bool)} {res.idx} <br/>
          </div>
       )
    }

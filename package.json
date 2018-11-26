@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/seanlee31/algorithmslive#readme",
   "dependencies": {
+    "jquery": "^3.3.1",
     "react": "^16.6.1",
     "react-dom": "^16.6.1"
   },

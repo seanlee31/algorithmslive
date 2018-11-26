@@ -11,7 +11,7 @@ function binarySearchHelper(array, target, start, end) {
     const res = { bool: false, idx: null };
 
     while (end >= start) {
-        mid = start + Math.floor((end - start) / 2);
+        let mid = start + Math.floor((end - start) / 2);
 
         if (array[mid] === target) {
             res['bool'] = true;
@@ -70,6 +70,11 @@ function searchDCHelper(array, target, start, end) {
     }
 }
 
+const searchAlgs = {
+    "binarysearch": binarySearch,
+    "searchdc": searchDC
+};
+
 var array = ["john", "sean", "shawn", "jon", "shown", "jonn", "johnny"],
     target = "sean";
 
@@ -84,4 +89,4 @@ console.log(`[Target] ${target}`);
 var res = searchDC(array, target);
 console.log(res);
 
-export {binarySearch, searchDC};
+export {binarySearch, searchDC, searchAlgs};
