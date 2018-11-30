@@ -1,7 +1,15 @@
+// Import Main Frameworks //
 import React, { Component } from 'react';
-import {searchAlgs, binarySearch, searchDC} from '../algorithms/searchAlgorithms';
-import {getAlgorithmByTitle} from './utils';
 import $ from 'jquery';
+
+// // Import Algorithms //
+// import { searchAlgs, binarySearch, searchDC } from '../algorithms/searchAlgorithms';
+// import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
+// import { findMaxMinElements } from '../algorithms/dacAlgorithms';
+
+// Import Helper Utilites //
+import { getAlgorithmByTitle } from './utils';
+
 
 
 var array = [10, 20, 30, 40],
@@ -9,11 +17,7 @@ var array = [10, 20, 30, 40],
 
 const pageTitle = "Algorithms Live";
 const algorithmDemosTitle = "Algorithms Demos";
-const algorithmDemoTitle = "Binary Search";
 const algorithmTypeTitle = "Search Algorithms";
-
-let alg = getAlgorithmByTitle(algorithmDemoTitle);
-let res = alg(array, target);
 
 class App extends Component {
    render() {
@@ -55,7 +59,8 @@ class AlgorithmDemosByTypes extends Component {
       return (
          <div>
             <h3>{algorithmTypeTitle}</h3>
-            <AlgorithmDemos/>
+            <AlgorithmDemos algorithmDemoTitle="Binary Search"/>
+            <AlgorithmDemos algorithmDemoTitle="searchDC"/>
          </div>
       )
    }
@@ -63,10 +68,12 @@ class AlgorithmDemosByTypes extends Component {
 
 class AlgorithmDemos extends Component {
    render() {
+      let alg = getAlgorithmByTitle(this.props.algorithmDemoTitle);
+      let res = alg(array, target);
       return (
          <div>
-            <h4>{algorithmDemoTitle}</h4>
-            <AlgorithmDemo/>
+            <h4>{this.props.algorithmDemoTitle}</h4>
+            <AlgorithmDemo result={res}/>
          </div>
       )
    }
@@ -78,7 +85,8 @@ class AlgorithmDemo extends Component {
          <div>
             Array: {array.map( (el) => <li>{el}</li> )} <br/>
             Target: {target} <br/>
-            Result: {String(res.bool)} {res.idx} <br/>
+            Result (Boolean): {String(this.props.result.bool).toUpperCase()} <br/>
+            Result (Index): {this.props.result.idx} <br/>
          </div>
       )
    }
