@@ -8,7 +8,7 @@ import $ from 'jquery';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle } from './utils';
+import { getAlgorithmByTitle, getAlgorithmDemoTitle } from './utils';
 
 
 
@@ -47,7 +47,8 @@ class Content extends Component {
       return (
          <div>
             <h2>{algorithmDemosTitle}</h2>
-            <AlgorithmDemosByTypes/>
+            <AlgorithmDemosByTypes type="search"/>
+            <AlgorithmDemosByTypes type="sorting"/>
          </div>
       );
    }
@@ -58,9 +59,9 @@ class AlgorithmDemosByTypes extends Component {
    render() {
       return (
          <div>
-            <h3>{algorithmTypeTitle}</h3>
-            <AlgorithmDemos algorithmDemoTitle="Binary Search"/>
-            <AlgorithmDemos algorithmDemoTitle="searchDC"/>
+            <h3>{this.props.type.toUpperCase()} Algorithms</h3>
+            <AlgorithmDemos algorithmDemoTitle={getAlgorithmDemoTitle(this.props.type)}/>
+            <AlgorithmDemos algorithmDemoTitle={getAlgorithmDemoTitle(this.props.type)}/>
          </div>
       )
    }
