@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {searchAlgs, binarySearch, searchDC} from '../algorithms/searchAlgorithms';
+import {getAlgorithmByTitle} from './utils';
 import $ from 'jquery';
 
 
@@ -10,12 +11,6 @@ const pageTitle = "Algorithms Live";
 const algorithmDemosTitle = "Algorithms Demos";
 const algorithmDemoTitle = "Binary Search";
 const algorithmTypeTitle = "Search Algorithms";
-
-function getAlgorithmByTitle(algTitle) {
-   let algTitleTrimmed = algTitle.replace(/\s/g, "").toLowerCase();
-   let algorithm = searchAlgs[algTitleTrimmed];
-   return algorithm;
-}
 
 let alg = getAlgorithmByTitle(algorithmDemoTitle);
 let res = alg(array, target);
