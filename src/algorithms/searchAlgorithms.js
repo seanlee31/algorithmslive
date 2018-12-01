@@ -60,10 +60,10 @@ function searchDCHelper(array, target, start, end) {
         res['bool'] = first.bool || second.bool;
         // console.log(`[Current Result] \nbool : ${res['bool']}\n first.bool : ${first.bool}\n first.idx : ${first.idx}\n second.bool : ${second.bool} \n second.idx : ${second.idx} \n`)
         
-        if (first.idx != null) {
+        if (first.idx) {
             res['idx'] = first.idx
         }
-        if (second.idx != null) {
+        if (second.idx) {
             res['idx'] = second.idx
         }
 

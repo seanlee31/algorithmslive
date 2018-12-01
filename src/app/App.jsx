@@ -10,7 +10,7 @@ import $ from 'jquery';
 // Import Helper Utilites //
 import { getAlgorithmByTitle, getAlgorithmTitles } from './utils';
 
-var array = [10, 20, 30, 40],
+var array = [10, 0, 30, 40, 70],
     target = 20;
 
 const pageTitle = "Algorithms Live";
@@ -86,7 +86,7 @@ class AlgorithmDemoResult extends Component {
             Array: [{array.join(', ')}] <br/>
             Target: {target} <br/>
             Result (Boolean): {String(this.props.result.bool).toUpperCase()} <br/>
-            Result (Index): {this.props.result.idx} <br/>
+            Result (Index): {(this.props.result.idx) ? this.props.result.idx : "NONE"} <br/>
          </div>
       )
    }

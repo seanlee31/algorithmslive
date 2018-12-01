@@ -12,15 +12,19 @@ function getAlgorithmByTitle(algTitle) {
 }
 
 function getAlgorithmTitles(algTitle) {
-   let algs = [];
+   let algs = ['testing'];
    switch(algTitle) {
       case "search":
          algs = [...Object.keys(searchAlgs)];
          break;
       case "sorting":
-      
+         algs = [...Object.keys(sortingAlgs)];
+         break;
+      case "dac":
+         algs = [...Object.keys(dacAlgs)];
          break;
    }
+   console.log(algs)
    return algs;
 }
 
