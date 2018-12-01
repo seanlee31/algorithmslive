@@ -48,7 +48,6 @@ class Content extends Component {
          <div>
             <h2>{algorithmDemosTitle}</h2>
             <AlgorithmDemosByTypes type="search"/>
-            <AlgorithmDemosByTypes type="sorting"/>
          </div>
       );
    }
@@ -69,6 +68,8 @@ class AlgorithmDemosByTypes extends Component {
 
 class AlgorithmDemos extends Component {
    render() {
+      console.log(this.props.algorithmDemoTitle)
+      console.log("======================")
       let alg = getAlgorithmByTitle(this.props.algorithmDemoTitle);
       let res = alg(array, target);
       return (

@@ -8,13 +8,11 @@ const algs = { ...searchAlgs, ...sortingAlgs, ...dacAlgs };
 function getAlgorithmByTitle(algTitle) {
    let algTitleTrimmed = algTitle.replace(/\s/g, "").toLowerCase();
    let algorithm = algs[algTitleTrimmed];
-   console.log(algTitle)
-   console.log(algs)
-   console.log(algorithm)
    return algorithm;
 }
 
 function getAlgorithmDemoTitle(algTitle) {
+   console.log(`testing 1 - ${algTitle}`)
    let alg = "Binary Search";  // default alg.
    switch(algTitle) {
       case "search":
