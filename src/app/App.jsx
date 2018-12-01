@@ -83,7 +83,7 @@ class AlgorithmDemoResult extends Component {
    render() {
       return (
          <div>
-            Array: {array.map( (el) => <li>{el}</li> )} <br/>
+            Array: [{array.join(', ')}] <br/>
             Target: {target} <br/>
             Result (Boolean): {String(this.props.result.bool).toUpperCase()} <br/>
             Result (Index): {this.props.result.idx} <br/>
