@@ -8,9 +8,7 @@ import $ from 'jquery';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmDemoTitle } from './utils';
-
-
+import { getAlgorithmByTitle, getAlgorithmTitles } from './utils';
 
 var array = [10, 20, 30, 40],
     target = 20;
@@ -47,41 +45,41 @@ class Content extends Component {
       return (
          <div>
             <h2>{algorithmDemosTitle}</h2>
-            <AlgorithmDemosByTypes type="search"/>
+            <AlgorithmDemosByType type="search"/>
          </div>
       );
    }
 }
 
 // Algorithms
-class AlgorithmDemosByTypes extends Component {
+class AlgorithmDemosByType extends Component {
    render() {
+      let algTitles = getAlgorithmTitles(this.props.type);
+      console.log(algTitles)
       return (
          <div>
             <h3>{this.props.type.toUpperCase()} Algorithms</h3>
-            <AlgorithmDemos algorithmDemoTitle={getAlgorithmDemoTitle(this.props.type)}/>
-            <AlgorithmDemos algorithmDemoTitle={getAlgorithmDemoTitle(this.props.type)}/>
-         </div>
-      )
-   }
-}
-
-class AlgorithmDemos extends Component {
-   render() {
-      console.log(this.props.algorithmDemoTitle)
-      console.log("======================")
-      let alg = getAlgorithmByTitle(this.props.algorithmDemoTitle);
-      let res = alg(array, target);
-      return (
-         <div>
-            <h4>{this.props.algorithmDemoTitle}</h4>
-            <AlgorithmDemo result={res}/>
+            {algTitles.map( (el) => <AlgorithmDemo algorithmTitle={el}/>)}
          </div>
       )
    }
 }
 
 class AlgorithmDemo extends Component {
+   render() {
+      let alg = getAlgorithmByTitle(this.props.algorithmTitle);
+      let res = alg(array, target);
+      return (
+         <div>
+            <h4>{this.props.algorithmTitle}</h4>
+            <div>{alg.toString()}</div>
+            <AlgorithmDemoResult result={res}/>
+         </div>
+      )
+   }
+}
+
+class AlgorithmDemoResult extends Component {
    render() {
       return (
          <div>

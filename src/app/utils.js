@@ -11,21 +11,17 @@ function getAlgorithmByTitle(algTitle) {
    return algorithm;
 }
 
-function getAlgorithmDemoTitle(algTitle) {
-   console.log(`testing 1 - ${algTitle}`)
-   let alg = "Binary Search";  // default alg.
+function getAlgorithmTitles(algTitle) {
+   let algs = [];
    switch(algTitle) {
       case "search":
-         // Get an algorithm from search algorithms.
-         alg = "Binary Search";
-         alg = "searchDC";
+         algs = [...Object.keys(searchAlgs)];
          break;
       case "sorting":
-         // Get an algorithm from sorting algorithms.
-         alg = "";
+      
          break;
-   } 
-   return alg;
+   }
+   return algs;
 }
 
-export { getAlgorithmByTitle, getAlgorithmDemoTitle };
+export { getAlgorithmByTitle, getAlgorithmTitles };
