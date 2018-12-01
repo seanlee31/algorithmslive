@@ -8,14 +8,13 @@ import $ from 'jquery';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmTitles } from './utils';
+import { getAlgorithmByTitle, getAlgorithmTitles, randomArray } from './utils';
 
-var array = [10, 0, 30, 40, 70],
+var array = randomArray(20, 40),
     target = 20;
 
 const pageTitle = "Algorithms Live";
 const algorithmDemosTitle = "Algorithms Demos";
-const algorithmTypeTitle = "Search Algorithms";
 
 class App extends Component {
    render() {
@@ -55,7 +54,6 @@ class Content extends Component {
 class AlgorithmDemosByType extends Component {
    render() {
       let algTitles = getAlgorithmTitles(this.props.type);
-      console.log(algTitles)
       return (
          <div>
             <h3>{this.props.type.toUpperCase()} Algorithms</h3>
