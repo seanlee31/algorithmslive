@@ -10,10 +10,10 @@ import $ from 'jquery';
 // Import Helper Utilites //
 import { getAlgorithmByTitle, getAlgorithmTitles, randomArray } from './utils';
 
-var array = randomArray(20, 40),
+var array = randomArray(20, 20),
     target = 20;
 
-const pageTitle = "Algorithms Live";
+const pageTitle = "Algorithms Live!";
 const algorithmDemosTitle = "Algorithms Demos";
 
 class App extends Component {
@@ -44,7 +44,8 @@ class Content extends Component {
       return (
          <div>
             <h2>{algorithmDemosTitle}</h2>
-            <AlgorithmDemosByType type="search"/>
+            <AlgorithmDemosByType algType="search"/>
+            <AlgorithmDemosByType algType="dac"/>
          </div>
       );
    }
@@ -53,11 +54,11 @@ class Content extends Component {
 // Algorithms
 class AlgorithmDemosByType extends Component {
    render() {
-      let algTitles = getAlgorithmTitles(this.props.type);
+      let algTitles = getAlgorithmTitles(this.props.algType);
       return (
          <div>
-            <h3>{this.props.type.toUpperCase()} Algorithms</h3>
-            {algTitles.map( (el) => <AlgorithmDemo algorithmTitle={el}/>)}
+            <h3>{this.props.algType.toUpperCase()} Algorithms</h3>
+            {algTitles.map( (el) => <AlgorithmDemo algTitle={el} algType={this.props.algType}/>)}
          </div>
       )
    }
@@ -65,13 +66,29 @@ class AlgorithmDemosByType extends Component {
 
 class AlgorithmDemo extends Component {
    render() {
-      let alg = getAlgorithmByTitle(this.props.algorithmTitle);
-      let res = alg(array, target);
+      let alg = getAlgorithmByTitle(this.props.algTitle);
+      let res;
+
+      switch (this.props.algType) {
+         case "search":
+            res = alg(array, target);
+            break;
+         case "sorting":
+            res = alg(array, target);
+            break;
+         case "dac":
+            res = alg(array, 0, array.length - 1);
+            break;
+         default:
+            res = alg(array, target);
+            break;
+      }
+
       return (
          <div>
-            <h4>{this.props.algorithmTitle}</h4>
+            <h4>{this.props.algTitle}</h4>
             <div>{alg.toString()}</div>
-            <AlgorithmDemoResult result={res}/>
+            <AlgorithmDemoResult algResult={res} algTitle={this.props.algTitle}/>
          </div>
       )
    }
@@ -79,12 +96,34 @@ class AlgorithmDemo extends Component {
 
 class AlgorithmDemoResult extends Component {
    render() {
+      let res;
+      switch (this.props.algTitle) {
+         case "binarysearch":
+         case "searchdc":
+         case "sorting":
+            res = <div class="algResult">
+               Result (Boolean): {String(this.props.algResult.bool).toUpperCase()} <br/>
+               Result (Index): {(this.props.algResult.idx) ? this.props.algResult.idx : "NONE"}
+            </div>
+            break;
+         case "findmaxminelements":
+            res = <div class="algResult">
+               Result (MAX): {this.props.algResult.max} <br/>
+               Result (MIN): {this.props.algResult.min}
+            </div>
+            break;
+         default:
+            res = <div class="algResult">
+               Result: No Matching Algorithms!
+            </div> 
+            break;
+      }
+
       return (
          <div>
             Array: [{array.join(', ')}] <br/>
             Target: {target} <br/>
-            Result (Boolean): {String(this.props.result.bool).toUpperCase()} <br/>
-            Result (Index): {(this.props.result.idx) ? this.props.result.idx : "NONE"} <br/>
+            {res}
          </div>
       )
    }

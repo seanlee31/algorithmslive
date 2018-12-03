@@ -30,6 +30,6 @@ module.exports = {
    devServer: {
      contentBase: './dist',
      port: 8080,
-     hot: true
+     hot: true      // Auto Refresh Changes
    }
  };
