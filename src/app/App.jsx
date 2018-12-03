@@ -114,7 +114,8 @@ class AlgorithmDemoResult extends Component {
             break;
          default:
             res = <div class="algResult">
-               Result: No Matching Algorithms!
+               Result: No Matching Algorithms! <br/>
+               Algorithm Requested: {this.props.algTitle}
             </div> 
             break;
       }
