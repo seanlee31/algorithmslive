@@ -8,9 +8,9 @@ import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmTitles, randomIntegerArray } from './utils';
+import { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray } from './utils';
 
-var array = randomIntegerArray(20, 20),
+var array = randomIntArray(20, 20),
     target = 20;
 
 const pageTitle = "Algorithms Live!";
