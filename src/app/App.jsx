@@ -8,7 +8,7 @@ import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult } from './utils';
+import { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult, getAlgResult } from './utils';
 
 var array = randomIntArray(20, 20),
     target = 20;
@@ -59,7 +59,7 @@ class AlgorithmDemosByType extends Component {
       return (
          <div>
             <h3>{this.props.algType.toUpperCase()} Algorithms</h3>
-            {algTitles.map( (el) => <AlgorithmDemo algTitle={el} algType={this.props.algType}/>)}
+            {algTitles.map( (el, idx) => <AlgorithmDemo key={idx} algTitle={el} algType={this.props.algType}/>)}
          </div>
       )
    }
@@ -68,24 +68,7 @@ class AlgorithmDemosByType extends Component {
 class AlgorithmDemo extends Component {
    render() {
       let alg = getAlgorithmByTitle(this.props.algTitle);
-      let res;
-      console.log(alg)
-
-      switch (this.props.algType) {
-         case "search":
-            res = alg(array, target);
-            break;
-         case "sorting":
-            res = alg(array, 0, array.length - 1);
-            break;
-         case "dac":
-            res = alg(array, 0, array.length - 1);
-            break;
-         default:
-            res = alg(array, target);
-            break;
-      }
-      console.log(res)
+      let res = getAlgResult(array, target, this.props.algType, alg);
 
       return (
          <div>
@@ -103,7 +86,6 @@ class AlgorithmDemoResult extends Component {
          Array: [{array.join(', ')}] <br/>
          Target: {target}
       </div>
-      console.log(`testing: ${this.props.algResult}`)
       let parsedResult = getParsedAlgResult(array, this.props.algTitle, this.props.algResult);
 
       return (

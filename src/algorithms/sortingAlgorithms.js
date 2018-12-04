@@ -2,7 +2,6 @@
 import { printArrayWithRange, getMidIdx } from './utils';
 
 function mergeSort(array, start, end) {
-    console.log(`${start}:${end}`)
     if (start === end) {
         return [array[start]];
     } else {

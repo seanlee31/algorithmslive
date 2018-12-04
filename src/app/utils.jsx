@@ -36,37 +36,55 @@ function randomIntArray(length, max) {
    return [...new Array(length)].map(() => Math.round(Math.random() * max));
 }
 
+function getAlgResult(array, target, algType, alg) {
+   let res;
+   switch (algType) {
+      case "search":
+         res = alg(array, target);
+         break;
+      case "sorting":
+         res = alg(array, 0, array.length - 1);
+         break;
+      case "dac":
+         res = alg(array, 0, array.length - 1);
+         break;
+      default:
+         res = alg(array, target);
+         break;
+   }
+   return res;
+}
+
 function getParsedAlgResult(array, alg, res) {
    let parsedRes;
-   console.log(res)
 
    switch (alg) {
       case "binarysearch":
-         parsedRes = <div class="algResult">
+         parsedRes = <div className="algResult">
             Array (Sorted): [{sortingAlgs['mergesort'](array, 0, array.length-1).join(', ')}]  <br/>
             Result (Boolean): {String(res.bool).toUpperCase()} <br/>
             Result (Index): {(res.idx) ? res.idx : "NONE"}
          </div>
          break;
       case "searchdc":
-         parsedRes = <div class="algResult">
+         parsedRes = <div className="algResult">
             Result (Boolean): {String(res.bool).toUpperCase()} <br/>
             Result (Index): {(res.idx) ? res.idx : "NONE"}
          </div>
          break;
       case "mergesort":
-         parsedRes = <div class="algResult">
+         parsedRes = <div className="algResult">
             Result (Sorted Array): [{res.join(', ')}]
          </div>
          break;
       case "findmaxminelements":
-         parsedRes = <div class="algResult">
+         parsedRes = <div className="algResult">
             Result (MAX): {res.max} <br/>
             Result (MIN): {res.min}
          </div>
          break;
       default:
-         parsedRes = <div class="algResult">
+         parsedRes = <div className="algResult">
             Result: No Matching Algorithms! <br/>
             Algorithm Requested: {alg}
          </div> 
@@ -75,4 +93,5 @@ function getParsedAlgResult(array, alg, res) {
    return parsedRes;
 }
 
-export { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult };
+
+export { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult, getAlgResult };
