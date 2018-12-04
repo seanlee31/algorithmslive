@@ -8,7 +8,7 @@ import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray } from './utils';
+import { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult } from './utils';
 
 var array = randomIntArray(20, 20),
     target = 20;
@@ -85,6 +85,7 @@ class AlgorithmDemo extends Component {
             res = alg(array, target);
             break;
       }
+      console.log(res)
 
       return (
          <div>
@@ -102,46 +103,14 @@ class AlgorithmDemoResult extends Component {
          Array: [{array.join(', ')}] <br/>
          Target: {target}
       </div>
-
-      let res;
-      switch (this.props.algTitle) {
-         case "binarysearch":
-            res = <div class="algResult">
-               Array (Sorted): [{mergeSort(array, 0, array.length-1).join(', ')}]  <br/>
-               Result (Boolean): {String(this.props.algResult.bool).toUpperCase()} <br/>
-               Result (Index): {(this.props.algResult.idx) ? this.props.algResult.idx : "NONE"}
-            </div>
-            break;
-         case "searchdc":
-            res = <div class="algResult">
-               Result (Boolean): {String(this.props.algResult.bool).toUpperCase()} <br/>
-               Result (Index): {(this.props.algResult.idx) ? this.props.algResult.idx : "NONE"}
-            </div>
-            break;
-         case "mergesort":
-            res = <div class="algResult">
-               Result (Sorted Array): [{this.props.algResult.join(', ')}]
-            </div>
-            break;
-         case "findmaxminelements":
-            res = <div class="algResult">
-               Result (MAX): {this.props.algResult.max} <br/>
-               Result (MIN): {this.props.algResult.min}
-            </div>
-            break;
-         default:
-            res = <div class="algResult">
-               Result: No Matching Algorithms! <br/>
-               Algorithm Requested: {this.props.algTitle}
-            </div> 
-            break;
-      }
+      console.log(`testing: ${this.props.algResult}`)
+      let parsedResult = getParsedAlgResult(array, this.props.algTitle, this.props.algResult);
 
       return (
          <div>
             Array: [{array.join(', ')}] <br/>
             Target: {target} <br/>
-            {res}
+            {parsedResult}
          </div>
       )
    }
