@@ -1,11 +1,14 @@
 // Import Helper Utilites //
 import { printArrayWithRange } from './utils';
+import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 
 function binarySearch(array, target) {
     let start = 0,
         end = array.length - 1;
-
-    return binarySearchHelper(array, target, start, end);
+    
+    let sortedArray = mergeSort(array, start, end);
+    
+    return binarySearchHelper(sortedArray, target, start, end);
 }
 
 function binarySearchHelper(array, target, start, end) {

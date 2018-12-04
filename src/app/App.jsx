@@ -4,13 +4,13 @@ import $ from 'jquery';
 
 // // Import Algorithms //
 // import { searchAlgs, binarySearch, searchDC } from '../algorithms/searchAlgorithms';
-// import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
+import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmTitles, randomArray } from './utils';
+import { getAlgorithmByTitle, getAlgorithmTitles, randomIntegerArray } from './utils';
 
-var array = randomArray(20, 20),
+var array = randomIntegerArray(20, 20),
     target = 20;
 
 const pageTitle = "Algorithms Live!";
@@ -45,6 +45,7 @@ class Content extends Component {
          <div>
             <h2>{algorithmDemosTitle}</h2>
             <AlgorithmDemosByType algType="search"/>
+            <AlgorithmDemosByType algType="sorting"/>
             <AlgorithmDemosByType algType="dac"/>
          </div>
       );
@@ -68,13 +69,14 @@ class AlgorithmDemo extends Component {
    render() {
       let alg = getAlgorithmByTitle(this.props.algTitle);
       let res;
+      console.log(alg)
 
       switch (this.props.algType) {
          case "search":
             res = alg(array, target);
             break;
          case "sorting":
-            res = alg(array, target);
+            res = alg(array, 0, array.length - 1);
             break;
          case "dac":
             res = alg(array, 0, array.length - 1);
@@ -96,14 +98,29 @@ class AlgorithmDemo extends Component {
 
 class AlgorithmDemoResult extends Component {
    render() {
+      let input = <div>
+         Array: [{array.join(', ')}] <br/>
+         Target: {target}
+      </div>
+
       let res;
       switch (this.props.algTitle) {
          case "binarysearch":
+            res = <div class="algResult">
+               Array (Sorted): [{mergeSort(array, 0, array.length-1).join(', ')}]  <br/>
+               Result (Boolean): {String(this.props.algResult.bool).toUpperCase()} <br/>
+               Result (Index): {(this.props.algResult.idx) ? this.props.algResult.idx : "NONE"}
+            </div>
+            break;
          case "searchdc":
-         case "sorting":
             res = <div class="algResult">
                Result (Boolean): {String(this.props.algResult.bool).toUpperCase()} <br/>
                Result (Index): {(this.props.algResult.idx) ? this.props.algResult.idx : "NONE"}
+            </div>
+            break;
+         case "mergesort":
+            res = <div class="algResult">
+               Result (Sorted Array): [{this.props.algResult.join(', ')}]
             </div>
             break;
          case "findmaxminelements":

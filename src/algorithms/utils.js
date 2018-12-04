@@ -4,7 +4,6 @@ function printArrayWithRange(array, start, end) {
 
 function getMidIdx(start, end) {
     let mid = start + Math.floor((end - start) / 2);
-    console.log(`${start}, ${end}, ${mid}`)
     return mid;
 }
 

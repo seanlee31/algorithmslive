@@ -28,8 +28,8 @@ function getAlgorithmTitles(algTitle) {
    return algs;
 }
 
-function randomArray(length, max) {
+function randomIntegerArray(length, max) {
    return [...new Array(length)].map(() => Math.round(Math.random() * max));
 }
 
-export { getAlgorithmByTitle, getAlgorithmTitles, randomArray };
+export { getAlgorithmByTitle, getAlgorithmTitles, randomIntegerArray };
