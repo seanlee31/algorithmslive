@@ -1,4 +1,4 @@
-function printArrayWithRange(array, start, end) {
+function getArrayWithRange(array, start, end) {
     return array.slice(start, end + 1);
 }
 
@@ -7,4 +7,4 @@ function getMidIdx(start, end) {
     return mid;
 }
 
-export { printArrayWithRange, getMidIdx };
+export { getArrayWithRange, getMidIdx };

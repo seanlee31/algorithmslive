@@ -1,5 +1,5 @@
 // Import Helper Utilites //
-import { printArrayWithRange, getMidIdx } from './utils';
+import { getArrayWithRange, getMidIdx } from './utils';
 
 function mergeSort(array, start, end) {
     if (start === end) {
@@ -29,7 +29,7 @@ function merge(array1, array2) {
             minVal = array1.shift();
         } else if (val1 > val2) {
             minVal = array2.shift();
-        } else {  // When two values matches, select pop either one of them.
+        } else {  // When two values matches, select/pop either one of them.
             minVal = array1.shift();
         }
         output.push(minVal);

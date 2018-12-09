@@ -1,5 +1,5 @@
 // Import Helper Utilites //
-import { printArrayWithRange, getMidIdx } from './utils';
+import { getArrayWithRange, getMidIdx } from './utils';
 
 function findMaxMinElements(array, start, end) {
     console.log()

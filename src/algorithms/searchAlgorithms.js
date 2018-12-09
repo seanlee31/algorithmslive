@@ -1,5 +1,5 @@
 // Import Helper Utilites //
-import { printArrayWithRange } from './utils';
+import { getArrayWithRange } from './utils';
 import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 
 function binarySearch(array, target) {
@@ -50,7 +50,7 @@ function searchDCHelper(array, target, start, end) {
         // Divide
         let mid = start + Math.floor((end - start) / 2);
         
-        console.log(`[Current Array] ${printArrayWithRange(array, start, end)}`);
+        // console.log(`[Current Array] ${getArrayWithRange(array, start, end)}`);
         // console.log(`[Current Indicies] ${mid} | ${start} ${end}`);
         // Conquer
         // console.log('first')
