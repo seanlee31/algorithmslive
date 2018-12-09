@@ -8,7 +8,7 @@ import { mergeSort, mergeSortByParity } from '../algorithms/sortingAlgorithms';
 // import { findMaxMinElements } from '../algorithms/dacAlgorithms';
 
 // Import Helper Utilites //
-import { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult, getAlgResult } from './utils';
+import { getAlgByTitle, getAlgTitles, randomIntArray, getParsedAlgResult, getAlgResult } from './utils';
 
 var array = randomIntArray(20, 20),
     target = 20;
@@ -55,7 +55,7 @@ class Content extends Component {
 // Algorithms
 class AlgorithmDemosByType extends Component {
    render() {
-      let algTitles = getAlgorithmTitles(this.props.algType);
+      let algTitles = getAlgTitles(this.props.algType);
       return (
          <div>
             <h3>{this.props.algType.toUpperCase()} Algorithms</h3>
@@ -67,7 +67,7 @@ class AlgorithmDemosByType extends Component {
 
 class AlgorithmDemo extends Component {
    render() {
-      let alg = getAlgorithmByTitle(this.props.algTitle);
+      let alg = getAlgByTitle(this.props.algTitle);
       let res = getAlgResult(array, target, this.props.algType, alg);
 
       return (

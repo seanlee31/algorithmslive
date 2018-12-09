@@ -9,13 +9,17 @@ import { dacAlgs } from '../algorithms/dacAlgorithms';
 
 const algs = { ...searchAlgs, ...sortingAlgs, ...dacAlgs };
 
-function getAlgorithmByTitle(algTitle) {
+function randomIntArray(length, max) {
+   return [...new Array(length)].map(() => Math.round(Math.random() * max));
+}
+
+function getAlgByTitle(algTitle) {
    let algTitleTrimmed = algTitle.replace(/\s/g, "").toLowerCase();
    let algorithm = algs[algTitleTrimmed];
    return algorithm;
 }
 
-function getAlgorithmTitles(algTitle) {
+function getAlgTitles(algTitle) {
    let algs = ['testing'];
    switch(algTitle) {
       case "search":
@@ -28,12 +32,8 @@ function getAlgorithmTitles(algTitle) {
          algs = [...Object.keys(dacAlgs)];
          break;
    }
-   console.log(algs)
-   return algs;
-}
 
-function randomIntArray(length, max) {
-   return [...new Array(length)].map(() => Math.round(Math.random() * max));
+   return algs;
 }
 
 function getAlgResult(array, target, algType, alg) {
@@ -56,42 +56,41 @@ function getAlgResult(array, target, algType, alg) {
 }
 
 function getParsedAlgResult(array, alg, res) {
-   let parsedRes;
+   let parsedResult;
 
    switch (alg) {
       case "binarysearch":
-         parsedRes = <div className="algResult">
+         parsedResult = <div className="algResult">
             Array (Sorted): [{sortingAlgs['mergesort'](array, 0, array.length-1).join(', ')}]  <br/>
             Result (Boolean): {String(res.bool).toUpperCase()} <br/>
             Result (Index): {(res.idx) ? res.idx : "NONE"}
          </div>
          break;
       case "searchdc":
-         parsedRes = <div className="algResult">
+         parsedResult = <div className="algResult">
             Result (Boolean): {String(res.bool).toUpperCase()} <br/>
             Result (Index): {(res.idx) ? res.idx : "NONE"}
          </div>
          break;
       case "mergesort":
-         parsedRes = <div className="algResult">
+         parsedResult = <div className="algResult">
             Result (Sorted Array): [{res.join(', ')}]
          </div>
          break;
       case "findmaxminelements":
-         parsedRes = <div className="algResult">
+         parsedResult = <div className="algResult">
             Result (MAX): {res.max} <br/>
             Result (MIN): {res.min}
          </div>
          break;
       default:
-         parsedRes = <div className="algResult">
+         parsedResult = <div className="algResult">
             Result: No Matching Algorithms! <br/>
             Algorithm Requested: {alg}
          </div> 
          break;
    }
-   return parsedRes;
+   return parsedResult;
 }
 
-
-export { getAlgorithmByTitle, getAlgorithmTitles, randomIntArray, getParsedAlgResult, getAlgResult };
+export { randomIntArray, getAlgByTitle, getAlgTitles, getAlgResult, getParsedAlgResult };

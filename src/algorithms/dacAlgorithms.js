@@ -28,5 +28,4 @@ const dacAlgs = {
     "findmaxminelements": findMaxMinElements
 };
 
-
 export { findMaxMinElements, dacAlgs };

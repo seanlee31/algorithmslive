@@ -51,12 +51,8 @@ function searchDCHelper(array, target, start, end) {
         let mid = start + Math.floor((end - start) / 2);
         
         // console.log(`[Current Array] ${getArrayWithRange(array, start, end)}`);
-        // console.log(`[Current Indicies] ${mid} | ${start} ${end}`);
         // Conquer
-        // console.log('first')
         let first = searchDCHelper(array, target, start, mid);
-        // console.log('second')
-        // console.log(mid)
         let second = searchDCHelper(array, target, mid+1, end);
 
         // Combine
@@ -64,9 +60,9 @@ function searchDCHelper(array, target, start, end) {
         // console.log(`[Current Result] \nbool : ${res['bool']}\n first.bool : ${first.bool}\n first.idx : ${first.idx}\n second.bool : ${second.bool} \n second.idx : ${second.idx} \n`)
         
         if (first.idx) {
-            res['idx'] = first.idx
+            res['idx'] = first.idx;
         }
-        if (second.idx) {
+        if (second.idx) {;
             res['idx'] = second.idx
         }
 
@@ -79,18 +75,18 @@ const searchAlgs = {
     "searchdc": searchDC
 };
 
-var array = ["john", "sean", "shawn", "jon", "shown", "jonn", "johnny"],
-    target = "sean";
+// var array = ["john", "sean", "shawn", "jon", "shown", "jonn", "johnny"],
+//     target = "sean";
 
 // var array = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
 //     target = 50;
 
-var array = [10, 20, 30, 40],
-    target = 20;
+// var array = [10, 20, 30, 40],
+//     target = 20;
 
-console.log(`[Original Array] ${array}`);
-console.log(`[Target] ${target}`);
-var res = searchDC(array, target);
-console.log(res);
+// console.log(`[Original Array] ${array}`);
+// console.log(`[Target] ${target}`);
+// var res = searchDC(array, target);
+// console.log(res);
 
 export {binarySearch, searchDC, searchAlgs};
