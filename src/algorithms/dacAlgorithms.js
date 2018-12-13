@@ -2,7 +2,6 @@
 import { getArrayWithRange, getMidIdx } from './utils';
 
 function findMaxMinElements(array, start, end) {
-    console.log()
     if (start === end) {
         return {
             max: array[start],

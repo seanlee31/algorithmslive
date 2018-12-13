@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
+// Import Algorithms //
 import { searchAlgs } from '../algorithms/searchAlgorithms';
 import { sortingAlgs } from '../algorithms/sortingAlgorithms';
 import { dacAlgs } from '../algorithms/dacAlgorithms';

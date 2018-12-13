@@ -4,7 +4,9 @@
   "description": "A web application for live demos of algorithms using ReactJS + Node.JS stack.",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --config ./webpack.config.js",
+    "client": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "server": "nodemon --watch ./src/server ./src/server/server.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "build": "webpack --mode=production"
   },
   "repository": {
@@ -23,6 +25,7 @@
   },
   "homepage": "https://github.com/seanlee31/algorithmslive#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "jquery": "^3.3.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
@@ -32,7 +35,9 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "concurrently": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.18.8",
     "react-hot-loader": "^4.3.12",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
